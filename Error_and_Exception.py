@@ -34,23 +34,28 @@
 
 
 # whrite in simple.txt file without exception 
-try:
-    f = open('simple.txt' , 'w')
-    f.write("test write to simple text!")
-except IOError:
-    print('error: could not find file or read data!')
-else:
-    print('success!')
-    f.close()
+# try:
+#     f = open('simple.txt' , 'w')
+#     f.write("test write to simple text!")
+# except IOError:
+#     print('error: could not find file or read data!')
+# else:
+#     print('success!')
+#     f.close()
 
 
 # exception is true becouse we can just read 
+# try:
+#     f = open('simple.txt' , 'r')
+#     f.write("test write to simple text!")
+# except IOError:
+#     print('error: could not find file or read data!')
+# else:
+#     print('success!')
+#     f.close()
 
-try:
-    f = open('simple.txt' , 'r')
-    f.write("test write to simple text!")
-except IOError:
-    print('error: could not find file or read data!')
-else:
-    print('success!')
-    f.close()
+
+# If we managed the exception, the program would continue to run 
+f = open('simple.txt' , 'r')
+f.write("test write to simple text!")
+print('hello world')
