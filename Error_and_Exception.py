@@ -31,3 +31,14 @@
         else:
             if there is no exception then execute this block.
 """
+
+
+# whrite in simple.txt file without exception 
+try:
+    f = open('simple.txt' , 'w')
+    f.write("test write to simple text!")
+except IOError:
+    print('error: could not find file or read data!')
+else:
+    print('success!')
+    f.close()
