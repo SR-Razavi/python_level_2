@@ -5,7 +5,7 @@
     * we will use OOP to create a cart game war!
 """
 
-from random import Random, shuffle
+from random import shuffle
 
 # to useful variables for creating cards
 SUITE = 'H D S C'.split()
@@ -43,10 +43,10 @@ class Hand():
     this is the Hand class, each player has a hand, and can add or remove cards from that hand.
     ther should be an add and remove card method here.
     """
-    def __init__(self, cards) -> None:
+    def __init__(self, cards):
         self.cards = cards
 
-    def __str__(self) -> str:
+    def __str__(self):
         return 'contains {} cards'.format(len(self.cards))
 
     def add(self, added_cards):
@@ -60,13 +60,14 @@ class Player():
     this is the Player class, wich takes in a name and an instance of a Hand class object.
     the player can then play cards and check if they still have cards.
     """
-    def __init__(self, name, hand) -> None:
+    def __init__(self, name, hand):
         self.name = name
         self.hand = hand
 
     def play_card(self):
         drawn_card = self.hand.remove_card()
-        print('{} has plased: {} \n'.format(self.name, drawn_card))
+        print('{} has plased: {}'.format(self.name, drawn_card))
+        print('\n')
         return drawn_card
 
     def remove_war_cards(self):
