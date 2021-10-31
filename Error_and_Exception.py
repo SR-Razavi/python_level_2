@@ -56,6 +56,29 @@
 
 
 # If we managed the exception, the program would continue to run 
-f = open('simple.txt' , 'r')
-f.write("test write to simple text!")
-print('hello world')
+# f = open('simple.txt' , 'r')
+# f.write("test write to simple text!")
+# print('hello world')
+
+
+
+# exception not unconditionally fatal having your code being able to handle these sort of unexpected
+# that's really the whole point of this
+# if you expect something wrong may occur
+# or you have a certain condition that may actually mess up you code
+# you can counter it with an except clause
+# now another thing you may be wondering is well have am i supposed to know what error is going to happen
+# i can't have all these error codes memorized.
+# you know the basic one like syntax error or name error but you may not how known.
+# i know there are other errors where you can do is you actually don't need to give any error code 
+# if you just have a general except here it is going to print on any sort of air
+# so you don't actually need to specify the specific error.
+# so a lot of times you're going to be writing except they're ok
+try:
+    f = open('simple.txt' , 'r')
+    f.write("test write to simple text!")
+except:
+    print('error: could not find file or read data!')
+else:
+    print('success!')
+    f.close()
