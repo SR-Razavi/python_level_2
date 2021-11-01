@@ -13,7 +13,7 @@ import re # find pattern in text
 
 # and then i'm going to have some text to actually parse
 # so now has term one inside of it but it doesn't have the actule other term 
-text = 'this is a string with term1, not not the other'
+# text = 'this is a string with term1, not not the other'
 
 # and then what i'm going to do is say for patten in patterns 
 # for pattern in patterns:
@@ -34,32 +34,42 @@ text = 'this is a string with term1, not not the other'
 # now often you don't want the actule boolean value, you want the actule locations.
 # (re.search) it is return actully not true or false, it returns a special matched type.
 # it returns a match object.
-match = re.search('term1', text)
+# match = re.search('term1', text)
 
 # return (<re.Match object; span=(22, 27), match='term1'>) it is regular expressions match object
 # so what does it actually mean.
 # it contains information about the match.
 # so this object already contains information about where the match starts and the where the match ends.
-print(match) 
+# print(match) 
 
 # second grab it just by saing this matched dot start close parentheses.
 # now if i run this, now i can see it starts an index position 22 within the string.
-print(match.start())
+# print(match.start())
 
 # in regular expressions also have the ability to split a string on a particular pattern.
-split_term = '@'
+# split_term = '@'
 
 # maybe we want to split somthing i can say that my phrase will just say e-mail is equal
 # to user at gmail dot com.
-email = 'user@gmail.com'
+# email = 'user@gmail.com'
 
 # and then instead of (re.search) i can say (re.split) and then grab the split term and then 
 # pasand the e-mail address
-print(re.split(split_term, email))
+# print(re.split(split_term, email))
 
 # and we have seen this before.
 # this is actully built in already to string 
 # so you could just say split as a method off of this on the at symbol.
 # but it comes from the regular expression library.
 # so just keep that in mind.
-email = 'user@gmail.com'.split('@')
+# email = 'user@gmail.com'.split('@')
+
+
+
+# so we learn how to find the match and we learn how to do a split.
+# now a lot time there are more complicated patterns that you're going to be looking for or maybe
+# you want to find all the instances of a pattern and you can use are either find all the find all the 
+# intances of pattern in a string, let me show you what.
+# it just takes a pattern or a string and return of all non overlapping matches in the string.
+print(re.findall('match', 'test phrase match in middle')) # ['match']
+print(re.findall('match', 'test phrase match in match middle')) # ['match' , 'match]
