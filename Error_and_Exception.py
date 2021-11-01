@@ -74,11 +74,23 @@
 # if you just have a general except here it is going to print on any sort of air
 # so you don't actually need to specify the specific error.
 # so a lot of times you're going to be writing except they're ok
+# try:
+#     f = open('simple.txt' , 'r')
+#     f.write("test write to simple text!")
+# except:
+#     print('error: could not find file or read data!')
+# else:
+#     print('success!')
+#     f.close()
+
+
+
+# so now let's introduce the finally keyword and the finally key block of code, 
+# will always be run regardless if there is an exception in the try code block.
 try:
     f = open('simple.txt' , 'r')
     f.write("test write to simple text!")
 except:
     print('error: could not find file or read data!')
-else:
-    print('success!')
-    f.close()
+finally:
+    print('i alwayes work no matter what!')
