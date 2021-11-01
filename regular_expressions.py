@@ -6,22 +6,60 @@
 
 import re # find pattern in text
 
-patterns = ['term1', 'term2'] # so these are the patterns i am going to be loking for
 
+
+
+# patterns = ['term1', 'term2'] # so these are the patterns i am going to be loking for
 
 # and then i'm going to have some text to actually parse
 # so now has term one inside of it but it doesn't have the actule other term 
 text = 'this is a string with term1, not not the other'
 
 # and then what i'm going to do is say for patten in patterns 
-for pattern in patterns:
-    print("i'm searching for: " + pattern)
+# for pattern in patterns:
+#     print("i'm searching for: " + pattern)
 
-    # so let's show you how you can use the regular expressions
-    # model to actully make that search.
-    # so i'm first going to check if there's a match so i call ( re ) dot and then, 
-    # the search function for that.
-    if(re.search(pattern, text)):
-        print('match!')
-    else:
-        print('no match!')
+#     # so let's show you how you can use the regular expressions
+#     # model to actully make that search.
+#     # so i'm first going to check if there's a match so i call ( re ) dot and then, 
+#     # the search function for that.
+#     if(re.search(pattern, text)):
+#         print('match!')
+#     else:
+#         print('no match!')
+
+
+
+
+# now often you don't want the actule boolean value, you want the actule locations.
+# (re.search) it is return actully not true or false, it returns a special matched type.
+# it returns a match object.
+match = re.search('term1', text)
+
+# return (<re.Match object; span=(22, 27), match='term1'>) it is regular expressions match object
+# so what does it actually mean.
+# it contains information about the match.
+# so this object already contains information about where the match starts and the where the match ends.
+print(match) 
+
+# second grab it just by saing this matched dot start close parentheses.
+# now if i run this, now i can see it starts an index position 22 within the string.
+print(match.start())
+
+# in regular expressions also have the ability to split a string on a particular pattern.
+split_term = '@'
+
+# maybe we want to split somthing i can say that my phrase will just say e-mail is equal
+# to user at gmail dot com.
+email = 'user@gmail.com'
+
+# and then instead of (re.search) i can say (re.split) and then grab the split term and then 
+# pasand the e-mail address
+print(re.split(split_term, email))
+
+# and we have seen this before.
+# this is actully built in already to string 
+# so you could just say split as a method off of this on the at symbol.
+# but it comes from the regular expression library.
+# so just keep that in mind.
+email = 'user@gmail.com'.split('@')
