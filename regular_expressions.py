@@ -92,43 +92,59 @@ def multi_re_find(patterns, phrase):
 test_phrase = 'sdsd..sssddd..sdddsddd...dsds...dssssss...sddddd'
 
 # i want find an (s) fallowed by zero or more these and keep in mind that kind of strange wording zero or more these.
-test_pattern = ['sd*']
+# test_pattern = ['sd*']
 
 # i pretty match get back every instance of where these is an 
 # (['sd', 'sd', 's', 's', 'sddd', 'sddd', 'sddd', 'sd', 's', 's', 's', 's', 's', 's', 's', 'sddddd'])  
 # wich makes sense because when you using the asterisks this returns (sd*) followed by anything repeated 
 # zero or more time, several so essentially you are kind of asking for almost anything.
 # anything that start an (s) at least.
-multi_re_find(test_pattern, test_phrase)
+# multi_re_find(test_pattern, test_phrase)
 
 # so if we want it by one or more of these we put a plus sign.
-test_pattern = ['sd+']
+# test_pattern = ['sd+']
 
 # ['sd', 'sd', 'sddd', 'sddd', 'sddd', 'sd', 'sddddd']
-multi_re_find(test_pattern, test_phrase)
+# multi_re_find(test_pattern, test_phrase)
 
 # now if i want it to be just zero or one time i can put a question mark.
 # it is not helpfull but is avalible for you
-test_pattern = ['sd?']
+# test_pattern = ['sd?']
 
 # ['sd', 'sd', 's', 's', 'sd', 'sd', 'sd', 'sd', 's', 's', 's', 's', 's', 's', 's', 'sd']
-multi_re_find(test_pattern, test_phrase)
+# multi_re_find(test_pattern, test_phrase)
 
 # you will probably want to know how do i define a specific counts.
 # so let's say i want to know what is it followed by three (d) in (sd{3}) by ({}) pass number of you repetition you want.
-test_pattern = ['sd{3}']
+# test_pattern = ['sd{3}']
 
 # ['sddd', 'sddd', 'sddd', 'sddd']
-multi_re_find(test_pattern, test_phrase)
+# multi_re_find(test_pattern, test_phrase)
 
 # if you want to specify tow numbers, maybe you are looking for one or there (d)
-test_pattern = ['sd{1,3}']
+# test_pattern = ['sd{1,3}']
 
 # ['sd', 'sd', 'sddd', 'sddd', 'sddd', 'sd', 'sddd']
-multi_re_find(test_pattern, test_phrase)
+# multi_re_find(test_pattern, test_phrase)
 
 
 
 # fallowed by zero or more a plus sign.
 # fallowed by one or more the question mark.
 # fallowed by either zero or one and then the {} where you can define the actule number or pass in a list of numbers.
+
+
+
+# say i want to find (s) followed by several letters or several sealer letters.
+test_pattern = ['s[d]+']
+
+# ['sd', 'sd', 'sddd', 'sddd', 'sddd', 'sd', 'sddddd']
+multi_re_find(test_pattern, test_phrase)
+
+# so i want to know where (s) is followed by either (s) or (d).
+# so a again not together but separate here.
+# so let me know is basically what i am asking here, where (s) is followed by one or more (s)'s or one or more (d)'s
+test_pattern = ['s[sd]+']
+
+# ['sdsd', 'sssddd', 'sdddsddd', 'sds', 'ssssss', 'sddddd']
+multi_re_find(test_pattern, test_phrase)
