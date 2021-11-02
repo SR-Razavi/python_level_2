@@ -89,7 +89,7 @@ def multi_re_find(patterns, phrase):
 
 # so let's start off with repetition syntax and there are five ways to express repetition in a pattern.
 # a pattern followed by the medak character asterix is repeated zero or more times.
-test_phrase = 'sdsd..sssddd..sdddsddd...dsds...dssssss...sddddd'
+# test_phrase = 'sdsd..sssddd..sdddsddd...dsds...dssssss...sddddd'
 
 # i want find an (s) fallowed by zero or more these and keep in mind that kind of strange wording zero or more these.
 # test_pattern = ['sd*']
@@ -136,15 +136,45 @@ test_phrase = 'sdsd..sssddd..sdddsddd...dsds...dssssss...sddddd'
 
 
 # say i want to find (s) followed by several letters or several sealer letters.
-test_pattern = ['s[d]+']
+# test_pattern = ['s[d]+']
 
 # ['sd', 'sd', 'sddd', 'sddd', 'sddd', 'sd', 'sddddd']
-multi_re_find(test_pattern, test_phrase)
+# multi_re_find(test_pattern, test_phrase)
 
 # so i want to know where (s) is followed by either (s) or (d).
 # so a again not together but separate here.
 # so let me know is basically what i am asking here, where (s) is followed by one or more (s)'s or one or more (d)'s
-test_pattern = ['s[sd]+']
+# test_pattern = ['s[sd]+']
 
 # ['sdsd', 'sssddd', 'sdddsddd', 'sds', 'ssssss', 'sddddd']
+# multi_re_find(test_pattern, test_phrase)
+
+
+
+
+# now i want to talk a little bit about exclusion and we can use the carrot symbol for exclusion.
+test_phrase = 'This is a string! But is has Punctuation. How can Remove id?'
+
+#so often you are going to get a string and you want to strip it 
+# of all punctuation and the way we can do that with regular expressions is by using the carrot 
+# symbol which i type like this that carrot symbol.
+# shift that seeks to exclude terms.
+# and then finaly you can use scope codes their special escope codes to find specific types of patterns
+# in you data such as digits non digits whitespace an dmore
+test_pattern = ['[^!.?]+']
+
+# back a list so searching for the pattern here but because it has this cuart symbol it's going to remove.
+# ['This is a string', ' But is has Punctuation', ' How can Remove id']
+multi_re_find(test_pattern, test_phrase)
+
+# all lowercase  characters.
+test_pattern = ['[a-z]+']
+
+# ['his', 'is', 'a', 'string', 'ut', 'is', 'has', 'unctuation', 'ow', 'can', 'emove', 'id']
+multi_re_find(test_pattern, test_phrase)
+
+# all uppercase  characters.
+test_pattern = ['[A-Z]+']
+
+# ['T', 'B', 'P', 'H', 'R']
 multi_re_find(test_pattern, test_phrase)
