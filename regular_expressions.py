@@ -153,7 +153,7 @@ def multi_re_find(patterns, phrase):
 
 
 # now i want to talk a little bit about exclusion and we can use the carrot symbol for exclusion.
-test_phrase = 'This is a string! But is has Punctuation. How can Remove id?'
+# test_phrase = 'This is a string! But is has Punctuation. How can Remove id?'
 
 #so often you are going to get a string and you want to strip it 
 # of all punctuation and the way we can do that with regular expressions is by using the carrot 
@@ -161,20 +161,66 @@ test_phrase = 'This is a string! But is has Punctuation. How can Remove id?'
 # shift that seeks to exclude terms.
 # and then finaly you can use scope codes their special escope codes to find specific types of patterns
 # in you data such as digits non digits whitespace an dmore
-test_pattern = ['[^!.?]+']
+# test_pattern = ['[^!.?]+']
 
 # back a list so searching for the pattern here but because it has this cuart symbol it's going to remove.
 # ['This is a string', ' But is has Punctuation', ' How can Remove id']
-multi_re_find(test_pattern, test_phrase)
+# multi_re_find(test_pattern, test_phrase)
 
 # all lowercase  characters.
-test_pattern = ['[a-z]+']
+# test_pattern = ['[a-z]+']
 
 # ['his', 'is', 'a', 'string', 'ut', 'is', 'has', 'unctuation', 'ow', 'can', 'emove', 'id']
-multi_re_find(test_pattern, test_phrase)
+# multi_re_find(test_pattern, test_phrase)
 
 # all uppercase  characters.
-test_pattern = ['[A-Z]+']
+# test_pattern = ['[A-Z]+']
 
 # ['T', 'B', 'P', 'H', 'R']
+# multi_re_find(test_pattern, test_phrase)
+
+
+# and these are indicated using a backslash.
+# so like i mentioned the escapes are indicated by prefixing the character with the backslash.
+# unfortunately a backslash must it self be escaped in a normall python string.
+# so the way we do that is by making it into a literal value with the letter (r) and this is where kind 
+# of looks really weird because it almost looks like it should give an error but we type in our outside of the string
+# there then a backslash and then the special code for the escape.
+# so for instance (d) .
+# it is back a seguence of digits.
+test_pattern = [r'\d+']
+
+test_phrase = 'this is a string with numbers 1556151 and a symbol #sashtag'
+
+# ['1556151']
+multi_re_find(test_pattern, test_phrase)
+
+# it back none digits
+test_pattern = [r'\D+']
+
+# ['this is a string with numbers ', ' and a symbol #sashtag']
+multi_re_find(test_pattern, test_phrase)
+
+# back sequence of whitspace
+test_pattern = [r'\s+']
+
+# [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+multi_re_find(test_pattern, test_phrase)
+
+# back sequence of non whitspace
+test_pattern = [r'\S+']
+
+# ['this', 'is', 'a', 'string', 'with', 'numbers', '1556151', 'and', 'a', 'symbol', '#sashtag']
+multi_re_find(test_pattern, test_phrase)
+
+# back all the alphanumeric characters those are letters and numbers
+test_pattern = [r'\w+']
+
+# ['this', 'is', 'a', 'string', 'with', 'numbers', '1556151', 'and', 'a', 'symbol', 'sashtag']
+multi_re_find(test_pattern, test_phrase)
+
+# back all the none alphanumeric
+test_pattern = [r'\W+']
+
+# [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' #']
 multi_re_find(test_pattern, test_phrase)
